@@ -3,13 +3,31 @@
   "version": "1.0.0",
   "description": "backend javascript sdk",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git@132.232.87.203:middleware/api-sdk-js.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "test": "test",
+    "src": "src"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-typescript": "^7.21.5",
+    "babel-jest": "^23.6.0",
+    "eslint": "^8.43.0"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "ethers": "^6.6.1",
+    "fs": "^0.0.1-security",
+    "ipfs": "^0.66.1",
+    "node-fetch": "^3.3.1"
+  }
 }
