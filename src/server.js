@@ -74,7 +74,7 @@ export class BackendSDk {
   }
 
   async PutObject(path, filename) {
-    const url = `${this.uri}/${this.storage}/`;
+    const url = `${this.uri}/${this.storage}/putObject`;
 
     const fileContent = await readFileContent(path);
     if (filename === undefined) {
@@ -95,8 +95,40 @@ export class BackendSDk {
     return data;
   }
 
-  async GetObject() {}
+  async GetObject(cid) {
+    const url = `${this.uri}/${this.storage}/getObject/${cid}`;
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${this.access}`,
+      },
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data;
+  }
+
+  async CreateBucket(bucket) {
+    const url = `${this.uri}/${this.storage}/createBucket`;
+    const param_data = { bucket: bucket };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.access}`,
+      },
+      body: JSON.stringify(param_data),
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data;
+
+  }
 }
+
+
 
 function readFileContent(filePath) {
   return new Promise((resolve, reject) => {
