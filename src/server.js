@@ -126,8 +126,24 @@ export class BackendSDk {
     return data;
 
   }
-}
 
+  async UpdateVisibility(mid, public) {
+    const url = `${this.uri}/${this.storage}/updateVisibility`;
+    const param_data = { public: public, mid: mid };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${this.access}`,
+      },
+      body: JSON.stringify(param_data),
+    };
+
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return data;
+  }
+}
 
 
 function readFileContent(filePath) {
